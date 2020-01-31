@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyApp</title>
+    <%= csrf_meta_tags %>
+
+  </head>
+
+  <body>
+
+    <!-- show nav links -->
+    <% if current_user %>
+      <%= link_to 'Home', home_path %> | <%= link_to 'Log Out', logout_path, method: :delete %> | <%= "Logged in as #{current_user.name}" %>
+    <% else %>
+      <%= link_to 'Home', home_path %> | <%= link_to 'Log In', login_path %> | <%= link_to 'Sign Up', new_user_path %>
+    <% end %>
+    <hr>
+    <!-- end -->
+
+    <% if notice %>
+      <%= notice %>
+    <% end %>
+
+    <% if alert %>
+      <%= alert %>
+    <% end %>
+    <!-- end -->
+
+    <%= yield %>
+  </body>
+</html>
